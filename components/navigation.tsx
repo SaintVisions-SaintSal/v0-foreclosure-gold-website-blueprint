@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 const leadProducts = [
   { name: "Wholesale Leads", href: "/leads/wholesale" },
@@ -19,7 +20,7 @@ export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border pt-safe">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -65,6 +66,12 @@ export function Navigation() {
               Pricing
             </Link>
             <Link
+              href="/blog"
+              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+            >
+              Blog
+            </Link>
+            <Link
               href="/contact"
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
             >
@@ -72,8 +79,8 @@ export function Navigation() {
             </Link>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-2">
+            <ThemeToggle />
             <Link href="/login">
               <Button variant="ghost" className="text-muted-foreground hover:text-foreground">
                 Login
@@ -84,47 +91,80 @@ export function Navigation() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button className="lg:hidden p-2 text-muted-foreground" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="flex lg:hidden items-center gap-2">
+            <ThemeToggle />
+            <button
+              className="p-3 text-muted-foreground min-w-[44px] min-h-[44px] flex items-center justify-center"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-background border-b border-border">
-          <div className="px-4 py-4 space-y-3">
-            <Link href="/" className="block py-2 text-foreground font-medium">
+        <div className="lg:hidden bg-background border-b border-border max-h-[80vh] overflow-y-auto">
+          <div className="px-4 py-4 space-y-1">
+            <Link
+              href="/"
+              className="block py-3 px-2 text-foreground font-medium min-h-[44px] flex items-center"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               Home
             </Link>
-            <Link href="/how-it-works" className="block py-2 text-muted-foreground">
+            <Link
+              href="/how-it-works"
+              className="block py-3 px-2 text-muted-foreground min-h-[44px] flex items-center"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               How It Works
             </Link>
-            <div className="py-2">
-              <span className="text-muted-foreground text-sm">Lead Products</span>
-              <div className="mt-2 pl-4 space-y-2">
+            <div className="py-2 px-2">
+              <span className="text-muted-foreground text-sm font-medium">Lead Products</span>
+              <div className="mt-2 pl-2 space-y-1">
                 {leadProducts.map((product) => (
-                  <Link key={product.href} href={product.href} className="block py-1 text-sm text-muted-foreground">
+                  <Link
+                    key={product.href}
+                    href={product.href}
+                    className="block py-3 text-sm text-muted-foreground min-h-[44px] flex items-center"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
                     {product.name}
                   </Link>
                 ))}
               </div>
             </div>
-            <Link href="/pricing" className="block py-2 text-muted-foreground">
+            <Link
+              href="/pricing"
+              className="block py-3 px-2 text-muted-foreground min-h-[44px] flex items-center"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               Pricing
             </Link>
-            <Link href="/contact" className="block py-2 text-muted-foreground">
+            <Link
+              href="/blog"
+              className="block py-3 px-2 text-muted-foreground min-h-[44px] flex items-center"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Blog
+            </Link>
+            <Link
+              href="/contact"
+              className="block py-3 px-2 text-muted-foreground min-h-[44px] flex items-center"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               Contact
             </Link>
-            <div className="pt-4 flex flex-col gap-2">
-              <Link href="/login">
-                <Button variant="outline" className="w-full bg-transparent">
+            <div className="pt-4 flex flex-col gap-3 px-2">
+              <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
+                <Button variant="outline" className="w-full bg-transparent h-12">
                   Login
                 </Button>
               </Link>
-              <Link href="/signup">
-                <Button className="w-full bg-primary text-primary-foreground">Get Started</Button>
+              <Link href="/signup" onClick={() => setMobileMenuOpen(false)}>
+                <Button className="w-full bg-primary text-primary-foreground h-12">Get Started</Button>
               </Link>
             </div>
           </div>

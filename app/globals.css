@@ -3,52 +3,93 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Added light mode variables for theme switching */
 :root {
-  /* ForeclosureGold Brand Colors - Deep Charcoal/Black with Gold Accents */
-  --background: oklch(0.12 0.01 250);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.15 0.01 250);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.13 0.01 250);
-  --popover-foreground: oklch(0.98 0 0);
+  /* Light Mode - Clean whites with gold accents */
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.12 0.01 250);
+  --card: oklch(0.96 0 0);
+  --card-foreground: oklch(0.12 0.01 250);
+  --popover: oklch(0.98 0 0);
+  --popover-foreground: oklch(0.12 0.01 250);
 
   /* Gold Primary */
-  --primary: oklch(0.78 0.14 85);
-  --primary-foreground: oklch(0.12 0.01 250);
+  --primary: oklch(0.65 0.14 85);
+  --primary-foreground: oklch(0.98 0 0);
 
   /* Deep Navy Secondary */
-  --secondary: oklch(0.18 0.03 260);
-  --secondary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.92 0.01 250);
+  --secondary-foreground: oklch(0.12 0.01 250);
 
-  --muted: oklch(0.22 0.02 250);
-  --muted-foreground: oklch(0.65 0 0);
+  --muted: oklch(0.92 0.01 250);
+  --muted-foreground: oklch(0.45 0.01 250);
 
-  --accent: oklch(0.78 0.14 85);
-  --accent-foreground: oklch(0.12 0.01 250);
+  --accent: oklch(0.65 0.14 85);
+  --accent-foreground: oklch(0.98 0 0);
 
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
 
-  --border: oklch(0.28 0.02 250);
-  --input: oklch(0.2 0.02 250);
+  --border: oklch(0.88 0.01 250);
+  --input: oklch(0.92 0.01 250);
+  --ring: oklch(0.65 0.14 85);
+
+  --chart-1: oklch(0.65 0.14 85);
+  --chart-2: oklch(0.55 0.12 85);
+  --chart-3: oklch(0.45 0.1 85);
+  --chart-4: oklch(0.35 0.08 85);
+  --chart-5: oklch(0.25 0.06 85);
+
+  --radius: 0.625rem;
+
+  --sidebar: oklch(0.96 0 0);
+  --sidebar-foreground: oklch(0.12 0.01 250);
+  --sidebar-primary: oklch(0.65 0.14 85);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.92 0.01 250);
+  --sidebar-accent-foreground: oklch(0.12 0.01 250);
+  --sidebar-border: oklch(0.88 0.01 250);
+  --sidebar-ring: oklch(0.65 0.14 85);
+}
+
+/* Dark mode variables */
+.dark {
+  --background: oklch(0.08 0.01 250);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.12 0.01 250);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.1 0.01 250);
+  --popover-foreground: oklch(0.98 0 0);
+
+  --primary: oklch(0.78 0.14 85);
+  --primary-foreground: oklch(0.08 0.01 250);
+
+  --secondary: oklch(0.15 0.02 260);
+  --secondary-foreground: oklch(0.98 0 0);
+
+  --muted: oklch(0.18 0.02 250);
+  --muted-foreground: oklch(0.65 0 0);
+
+  --accent: oklch(0.78 0.14 85);
+  --accent-foreground: oklch(0.08 0.01 250);
+
+  --border: oklch(0.22 0.02 250);
+  --input: oklch(0.15 0.02 250);
   --ring: oklch(0.78 0.14 85);
 
-  /* Chart colors with gold accent */
   --chart-1: oklch(0.78 0.14 85);
   --chart-2: oklch(0.65 0.12 85);
   --chart-3: oklch(0.55 0.1 85);
   --chart-4: oklch(0.45 0.08 85);
   --chart-5: oklch(0.35 0.06 85);
 
-  --radius: 0.5rem;
-
-  --sidebar: oklch(0.1 0.01 250);
+  --sidebar: oklch(0.06 0.01 250);
   --sidebar-foreground: oklch(0.98 0 0);
   --sidebar-primary: oklch(0.78 0.14 85);
-  --sidebar-primary-foreground: oklch(0.12 0.01 250);
-  --sidebar-accent: oklch(0.18 0.02 250);
+  --sidebar-primary-foreground: oklch(0.08 0.01 250);
+  --sidebar-accent: oklch(0.15 0.02 250);
   --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(0.25 0.02 250);
+  --sidebar-border: oklch(0.2 0.02 250);
   --sidebar-ring: oklch(0.78 0.14 85);
 }
 
@@ -93,7 +134,6 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Custom gold color */
   --color-gold: oklch(0.78 0.14 85);
   --color-gold-dark: oklch(0.65 0.12 85);
   --color-gold-light: oklch(0.85 0.1 85);
@@ -105,6 +145,28 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Mobile-first touch optimizations */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  /* Mobile touch targets */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    touch-action: manipulation;
+  }
+}
+
+/* Safe area insets for PWA */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
   }
 }
 
@@ -136,6 +198,14 @@
 
 .text-gold-gradient {
   background: linear-gradient(135deg, oklch(0.85 0.1 85), oklch(0.78 0.14 85), oklch(0.65 0.12 85));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Dark mode text gradient adjustment */
+.dark .text-gold-gradient {
+  background: linear-gradient(135deg, oklch(0.88 0.12 85), oklch(0.78 0.14 85), oklch(0.68 0.12 85));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

@@ -96,14 +96,13 @@ export default function SignupPage() {
       return
     }
     setIsLoading(true)
-    // Simulate signup - will be replaced with actual auth
     setTimeout(() => {
       window.location.href = "/dashboard"
     }, 1500)
   }
 
   return (
-    <main className="min-h-screen bg-background flex">
+    <main className="min-h-screen bg-background flex pt-safe pb-safe">
       {/* Left Side - Branding */}
       <div className="hidden lg:flex lg:w-1/2 bg-secondary/30 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5" />
@@ -135,14 +134,14 @@ export default function SignupPage() {
                 </span>
               </div>
               <div className="text-3xl font-bold mb-2">
-                {plan === "unlimited" ? "$29.99" : "$7.50"}
+                {plan === "unlimited" ? "$29.99" : "$25"}
                 <span className="text-base font-normal text-muted-foreground">
                   {plan === "unlimited" ? "/month" : "/lead"}
                 </span>
               </div>
               <p className="text-sm text-muted-foreground">
                 {plan === "unlimited"
-                  ? "Unlimited leads, all categories, all states"
+                  ? "Unlimited leads, all categories, all states + market insights blog"
                   : "Pay only for the leads you need"}
               </p>
             </div>
@@ -155,10 +154,10 @@ export default function SignupPage() {
       </div>
 
       {/* Right Side - Form */}
-      <div className="flex-1 flex items-center justify-center p-8 overflow-y-auto">
+      <div className="flex-1 flex items-start sm:items-center justify-center p-6 sm:p-8 overflow-y-auto">
         <div className="w-full max-w-md">
           {/* Mobile Logo */}
-          <Link href="/" className="flex items-center gap-2 mb-8 lg:hidden">
+          <Link href="/" className="flex items-center gap-2 mb-6 lg:hidden">
             <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-xl">F</span>
             </div>
@@ -168,29 +167,44 @@ export default function SignupPage() {
             </span>
           </Link>
 
+          <div className="p-4 rounded-xl bg-card border border-border mb-6 lg:hidden">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium">Selected Plan</span>
+              <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold">
+                {plan === "unlimited" ? "Unlimited Access" : "Pay Per Lead"}
+              </span>
+            </div>
+            <div className="text-2xl font-bold mt-2">
+              {plan === "unlimited" ? "$29.99" : "$25"}
+              <span className="text-sm font-normal text-muted-foreground">
+                {plan === "unlimited" ? "/month" : "/lead"}
+              </span>
+            </div>
+          </div>
+
           {/* Progress Steps */}
-          <div className="flex items-center gap-2 mb-8">
+          <div className="flex items-center gap-2 mb-6 sm:mb-8">
             {[1, 2, 3].map((s) => (
               <div key={s} className="flex items-center">
                 <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
+                  className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-sm font-semibold ${
                     step >= s ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
                   }`}
                 >
                   {step > s ? <Check className="w-4 h-4" /> : s}
                 </div>
-                {s < 3 && <div className={`w-12 h-0.5 ${step > s ? "bg-primary" : "bg-muted"}`} />}
+                {s < 3 && <div className={`w-8 sm:w-12 h-0.5 ${step > s ? "bg-primary" : "bg-muted"}`} />}
               </div>
             ))}
           </div>
 
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2">
+          <div className="mb-6 sm:mb-8">
+            <h1 className="text-2xl sm:text-3xl font-bold mb-2">
               {step === 1 && "Create your account"}
               {step === 2 && "Choose lead types"}
               {step === 3 && "Select your markets"}
             </h1>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-sm sm:text-base">
               {step === 1 && (
                 <>
                   Already have an account?{" "}
@@ -204,7 +218,7 @@ export default function SignupPage() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             {step === 1 && (
               <>
                 <div>
@@ -234,7 +248,8 @@ export default function SignupPage() {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground p-1"
+                      aria-label={showPassword ? "Hide password" : "Show password"}
                     >
                       {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                     </button>
@@ -244,19 +259,19 @@ export default function SignupPage() {
             )}
 
             {step === 2 && (
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {leadTypes.map((type) => (
                   <button
                     key={type}
                     type="button"
                     onClick={() => toggleLeadType(type)}
-                    className={`p-4 rounded-xl border text-left transition-all ${
+                    className={`p-4 rounded-xl border text-left transition-all min-h-[56px] ${
                       selectedLeadTypes.includes(type)
                         ? "bg-primary/10 border-primary"
-                        : "bg-card border-border hover:border-primary/50"
+                        : "bg-card border-border hover:border-primary/50 active:bg-muted"
                     }`}
                   >
-                    <div className="flex items-center justify-between mb-1">
+                    <div className="flex items-center justify-between">
                       <span className="text-sm font-medium">{type}</span>
                       {selectedLeadTypes.includes(type) && <Check className="w-4 h-4 text-primary" />}
                     </div>
@@ -266,11 +281,11 @@ export default function SignupPage() {
             )}
 
             {step === 3 && (
-              <div className="max-h-[400px] overflow-y-auto space-y-2 pr-2">
+              <div className="max-h-[50vh] sm:max-h-[400px] overflow-y-auto space-y-2 pr-2 -mr-2">
                 <button
                   type="button"
                   onClick={() => setSelectedStates(selectedStates.length === states.length ? [] : [...states])}
-                  className="w-full p-3 rounded-xl bg-primary/10 border border-primary text-left mb-4"
+                  className="w-full p-3 rounded-xl bg-primary/10 border border-primary text-left mb-4 min-h-[48px]"
                 >
                   <span className="text-sm font-medium text-primary">
                     {selectedStates.length === states.length ? "Deselect All" : "Select All States"}
@@ -282,15 +297,15 @@ export default function SignupPage() {
                       key={state}
                       type="button"
                       onClick={() => toggleState(state)}
-                      className={`p-3 rounded-lg border text-left text-sm transition-all ${
+                      className={`p-3 rounded-lg border text-left text-sm transition-all min-h-[44px] ${
                         selectedStates.includes(state)
                           ? "bg-primary/10 border-primary"
-                          : "bg-card border-border hover:border-primary/50"
+                          : "bg-card border-border hover:border-primary/50 active:bg-muted"
                       }`}
                     >
                       <div className="flex items-center justify-between">
-                        <span>{state}</span>
-                        {selectedStates.includes(state) && <Check className="w-3 h-3 text-primary" />}
+                        <span className="truncate">{state}</span>
+                        {selectedStates.includes(state) && <Check className="w-3 h-3 text-primary shrink-0 ml-1" />}
                       </div>
                     </button>
                   ))}
@@ -298,15 +313,20 @@ export default function SignupPage() {
               </div>
             )}
 
-            <div className="flex gap-3">
+            <div className="flex gap-3 pt-2">
               {step > 1 && (
-                <Button type="button" variant="outline" onClick={() => setStep(step - 1)} className="flex-1 h-12">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setStep(step - 1)}
+                  className="flex-1 h-12 sm:h-14"
+                >
                   Back
                 </Button>
               )}
               <Button
                 type="submit"
-                className="flex-1 h-12 bg-primary text-primary-foreground hover:bg-primary/90"
+                className="flex-1 h-12 sm:h-14 bg-primary text-primary-foreground hover:bg-primary/90"
                 disabled={
                   isLoading ||
                   (step === 2 && selectedLeadTypes.length === 0) ||
@@ -326,7 +346,7 @@ export default function SignupPage() {
           </form>
 
           {step === 1 && (
-            <div className="mt-8 p-4 rounded-xl bg-primary/5 border border-primary/20">
+            <div className="mt-6 sm:mt-8 p-4 rounded-xl bg-primary/5 border border-primary/20">
               <div className="flex items-center gap-2 mb-2">
                 <Sparkles className="w-4 h-4 text-primary" />
                 <span className="text-sm font-medium">7-Day Free Trial</span>
