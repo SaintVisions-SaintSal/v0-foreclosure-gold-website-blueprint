@@ -1,0 +1,343 @@
+"use client"
+
+import type React from "react"
+
+import Link from "next/link"
+import { useState } from "react"
+import { useSearchParams } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Eye, EyeOff, ArrowRight, Check, Sparkles } from "lucide-react"
+
+const leadTypes = [
+  "Wholesale Leads",
+  "Purchase Leads",
+  "Probate Leads",
+  "Stop Sale / Pre-Foreclosure",
+  "Bankruptcy Gold",
+  "Missed Payment Alerts",
+]
+
+const states = [
+  "Alabama",
+  "Alaska",
+  "Arizona",
+  "Arkansas",
+  "California",
+  "Colorado",
+  "Connecticut",
+  "Delaware",
+  "Florida",
+  "Georgia",
+  "Hawaii",
+  "Idaho",
+  "Illinois",
+  "Indiana",
+  "Iowa",
+  "Kansas",
+  "Kentucky",
+  "Louisiana",
+  "Maine",
+  "Maryland",
+  "Massachusetts",
+  "Michigan",
+  "Minnesota",
+  "Mississippi",
+  "Missouri",
+  "Montana",
+  "Nebraska",
+  "Nevada",
+  "New Hampshire",
+  "New Jersey",
+  "New Mexico",
+  "New York",
+  "North Carolina",
+  "North Dakota",
+  "Ohio",
+  "Oklahoma",
+  "Oregon",
+  "Pennsylvania",
+  "Rhode Island",
+  "South Carolina",
+  "South Dakota",
+  "Tennessee",
+  "Texas",
+  "Utah",
+  "Vermont",
+  "Virginia",
+  "Washington",
+  "West Virginia",
+  "Wisconsin",
+  "Wyoming",
+]
+
+export default function SignupPage() {
+  const searchParams = useSearchParams()
+  const plan = searchParams.get("plan") || "unlimited"
+
+  const [showPassword, setShowPassword] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [selectedLeadTypes, setSelectedLeadTypes] = useState<string[]>([])
+  const [selectedStates, setSelectedStates] = useState<string[]>([])
+  const [step, setStep] = useState(1)
+
+  const toggleLeadType = (type: string) => {
+    setSelectedLeadTypes((prev) => (prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]))
+  }
+
+  const toggleState = (state: string) => {
+    setSelectedStates((prev) => (prev.includes(state) ? prev.filter((s) => s !== state) : [...prev, state]))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (step < 3) {
+      setStep(step + 1)
+      return
+    }
+    setIsLoading(true)
+    // Simulate signup - will be replaced with actual auth
+    setTimeout(() => {
+      window.location.href = "/dashboard"
+    }, 1500)
+  }
+
+  return (
+    <main className="min-h-screen bg-background flex">
+      {/* Left Side - Branding */}
+      <div className="hidden lg:flex lg:w-1/2 bg-secondary/30 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5" />
+        <div className="relative z-10 flex flex-col justify-between p-12 w-full">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-xl">F</span>
+            </div>
+            <span className="text-xl font-bold">
+              <span className="text-gold-gradient">Foreclosure</span>
+              <span className="text-foreground">Gold</span>
+            </span>
+          </Link>
+
+          <div className="max-w-md">
+            <h2 className="text-4xl font-bold mb-6">
+              Start finding <span className="text-gold-gradient">Golden</span> opportunities today
+            </h2>
+            <p className="text-muted-foreground text-lg mb-8">
+              Join thousands of investors accessing real-time distressed property leads nationwide.
+            </p>
+
+            {/* Plan Summary */}
+            <div className="p-6 rounded-xl bg-card border border-border">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-sm font-medium">Selected Plan</span>
+                <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold">
+                  {plan === "unlimited" ? "Unlimited Access" : "Pay Per Lead"}
+                </span>
+              </div>
+              <div className="text-3xl font-bold mb-2">
+                {plan === "unlimited" ? "$29.99" : "$7.50"}
+                <span className="text-base font-normal text-muted-foreground">
+                  {plan === "unlimited" ? "/month" : "/lead"}
+                </span>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                {plan === "unlimited"
+                  ? "Unlimited leads, all categories, all states"
+                  : "Pay only for the leads you need"}
+              </p>
+            </div>
+          </div>
+
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} ForeclosureGold. All rights reserved.
+          </p>
+        </div>
+      </div>
+
+      {/* Right Side - Form */}
+      <div className="flex-1 flex items-center justify-center p-8 overflow-y-auto">
+        <div className="w-full max-w-md">
+          {/* Mobile Logo */}
+          <Link href="/" className="flex items-center gap-2 mb-8 lg:hidden">
+            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-xl">F</span>
+            </div>
+            <span className="text-xl font-bold">
+              <span className="text-gold-gradient">Foreclosure</span>
+              <span className="text-foreground">Gold</span>
+            </span>
+          </Link>
+
+          {/* Progress Steps */}
+          <div className="flex items-center gap-2 mb-8">
+            {[1, 2, 3].map((s) => (
+              <div key={s} className="flex items-center">
+                <div
+                  className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
+                    step >= s ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+                  }`}
+                >
+                  {step > s ? <Check className="w-4 h-4" /> : s}
+                </div>
+                {s < 3 && <div className={`w-12 h-0.5 ${step > s ? "bg-primary" : "bg-muted"}`} />}
+              </div>
+            ))}
+          </div>
+
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold mb-2">
+              {step === 1 && "Create your account"}
+              {step === 2 && "Choose lead types"}
+              {step === 3 && "Select your markets"}
+            </h1>
+            <p className="text-muted-foreground">
+              {step === 1 && (
+                <>
+                  Already have an account?{" "}
+                  <Link href="/login" className="text-primary hover:underline">
+                    Sign in
+                  </Link>
+                </>
+              )}
+              {step === 2 && "Select the lead categories you're interested in"}
+              {step === 3 && "Choose the states you want to target"}
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {step === 1 && (
+              <>
+                <div>
+                  <label className="text-sm font-medium mb-2 block">Full Name</label>
+                  <Input type="text" placeholder="John Doe" className="bg-muted border-0 h-12" required />
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium mb-2 block">Email address</label>
+                  <Input type="email" placeholder="you@example.com" className="bg-muted border-0 h-12" required />
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium mb-2 block">Phone Number</label>
+                  <Input type="tel" placeholder="(555) 123-4567" className="bg-muted border-0 h-12" required />
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium mb-2 block">Password</label>
+                  <div className="relative">
+                    <Input
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Create a strong password"
+                      className="bg-muted border-0 h-12 pr-12"
+                      required
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                    >
+                      {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {step === 2 && (
+              <div className="grid grid-cols-2 gap-3">
+                {leadTypes.map((type) => (
+                  <button
+                    key={type}
+                    type="button"
+                    onClick={() => toggleLeadType(type)}
+                    className={`p-4 rounded-xl border text-left transition-all ${
+                      selectedLeadTypes.includes(type)
+                        ? "bg-primary/10 border-primary"
+                        : "bg-card border-border hover:border-primary/50"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm font-medium">{type}</span>
+                      {selectedLeadTypes.includes(type) && <Check className="w-4 h-4 text-primary" />}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {step === 3 && (
+              <div className="max-h-[400px] overflow-y-auto space-y-2 pr-2">
+                <button
+                  type="button"
+                  onClick={() => setSelectedStates(selectedStates.length === states.length ? [] : [...states])}
+                  className="w-full p-3 rounded-xl bg-primary/10 border border-primary text-left mb-4"
+                >
+                  <span className="text-sm font-medium text-primary">
+                    {selectedStates.length === states.length ? "Deselect All" : "Select All States"}
+                  </span>
+                </button>
+                <div className="grid grid-cols-2 gap-2">
+                  {states.map((state) => (
+                    <button
+                      key={state}
+                      type="button"
+                      onClick={() => toggleState(state)}
+                      className={`p-3 rounded-lg border text-left text-sm transition-all ${
+                        selectedStates.includes(state)
+                          ? "bg-primary/10 border-primary"
+                          : "bg-card border-border hover:border-primary/50"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span>{state}</span>
+                        {selectedStates.includes(state) && <Check className="w-3 h-3 text-primary" />}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="flex gap-3">
+              {step > 1 && (
+                <Button type="button" variant="outline" onClick={() => setStep(step - 1)} className="flex-1 h-12">
+                  Back
+                </Button>
+              )}
+              <Button
+                type="submit"
+                className="flex-1 h-12 bg-primary text-primary-foreground hover:bg-primary/90"
+                disabled={
+                  isLoading ||
+                  (step === 2 && selectedLeadTypes.length === 0) ||
+                  (step === 3 && selectedStates.length === 0)
+                }
+              >
+                {isLoading ? (
+                  <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                ) : (
+                  <>
+                    {step < 3 ? "Continue" : "Create Account"}
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </>
+                )}
+              </Button>
+            </div>
+          </form>
+
+          {step === 1 && (
+            <div className="mt-8 p-4 rounded-xl bg-primary/5 border border-primary/20">
+              <div className="flex items-center gap-2 mb-2">
+                <Sparkles className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium">7-Day Free Trial</span>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Start your free trial today. No credit card required to explore.
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </main>
+  )
+}
