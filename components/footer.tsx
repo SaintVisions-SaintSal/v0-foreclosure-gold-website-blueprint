@@ -30,21 +30,28 @@ export function Footer() {
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">F</span>
+                <span className="text-primary-foreground font-bold text-xl">C</span>
               </div>
               <span className="text-xl font-bold">
-                <span className="text-gold-gradient">Foreclosure</span>
-                <span className="text-foreground">Gold</span>
+                <span className="text-gold-gradient">Cookin</span>
+                <span className="text-foreground">Foreclosures</span>
               </span>
             </Link>
-            <p className="text-sm text-muted-foreground mb-4">Real-time distressed property leads across the USA.</p>
+            <p className="text-sm text-muted-foreground mb-2">
+              Real-time distressed property leads powered by responsible intelligence.
+            </p>
+            <p className="text-xs text-muted-foreground mb-4">
+              A Saint Vision Technologies LLC company
+              <br />
+              Operated by SaintSal™ AI
+            </p>
             <div className="space-y-2 text-sm text-muted-foreground">
               <a
-                href="mailto:support@foreclosuregold.com"
+                href="mailto:support@cookinforeclosures.com"
                 className="flex items-center gap-2 hover:text-primary transition-colors"
               >
                 <Mail className="w-4 h-4 text-primary" />
-                support@foreclosuregold.com
+                support@cookinforeclosures.com
               </a>
               <a href="tel:8885554653" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Phone className="w-4 h-4 text-primary" />
@@ -103,7 +110,7 @@ export function Footer() {
 
         <div className="border-t border-border mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground text-center sm:text-left">
-            © {new Date().getFullYear()} ForeclosureGold. All rights reserved.
+            © {new Date().getFullYear()} Saint Vision Technologies LLC. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <Link href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Twitter">

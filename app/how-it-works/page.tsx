@@ -67,7 +67,7 @@ export default function HowItWorksPage() {
       <section className="pt-32 pb-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            How <span className="text-gold-gradient">ForeclosureGold</span> Works
+            How <span className="text-gold-gradient">CookinForeclosures</span> Works
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Get started in minutes. Our streamlined process gets you from sign-up to receiving real-time distressed

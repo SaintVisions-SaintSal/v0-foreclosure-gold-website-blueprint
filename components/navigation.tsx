@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useState } from "react"
 import { Menu, X, ChevronDown } from "lucide-react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { ThemeToggle } from "@/components/theme-toggle"
@@ -23,14 +24,13 @@ export function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border pt-safe">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">F</span>
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative w-10 h-10 lg:w-12 lg:h-12">
+              <Image src="/saintsal-logo.png" alt="SaintSal Logo" fill className="object-contain" priority />
             </div>
-            <span className="text-xl font-bold tracking-tight">
-              <span className="text-gold-gradient">Foreclosure</span>
-              <span className="text-foreground">Gold</span>
+            <span className="text-xl lg:text-2xl font-bold tracking-tight">
+              <span className="text-gold-gradient">Cookin</span>
+              <span className="text-foreground">Foreclosures</span>
             </span>
           </Link>
 
@@ -38,6 +38,12 @@ export function Navigation() {
           <div className="hidden lg:flex items-center gap-8">
             <Link href="/" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
               Home
+            </Link>
+            <Link
+              href="/about"
+              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+            >
+              About
             </Link>
             <Link
               href="/how-it-works"
@@ -113,6 +119,13 @@ export function Navigation() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
+            </Link>
+            <Link
+              href="/about"
+              className="block py-3 px-2 text-muted-foreground min-h-[44px] flex items-center"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              About
             </Link>
             <Link
               href="/how-it-works"

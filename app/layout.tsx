@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: "ForeclosureGold - Real-Time Distressed Property Leads",
+  title: "CookinForeclosures - Responsible Intelligence - Welcome to the Capital of CAPITAL!",
   description:
     "Access verified, up-to-the-minute foreclosure, probate, missed-payment, and bankruptcy leads before anyone else. Nationwide coverage, every state, every county, every day.",
   keywords: [
@@ -27,11 +27,15 @@ export const metadata: Metadata = {
     "bankruptcy leads",
     "pre-foreclosure",
   ],
+  icons: {
+    icon: [{ url: "/saintsal-icon.png", type: "image/png" }, { url: "/favicon.ico" }],
+    apple: "/saintsal-icon.png",
+  },
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "ForeclosureGold",
+    title: "CookinForeclosures",
   },
   formatDetection: {
     telephone: true,
@@ -59,8 +63,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* PWA iOS icons */}
-        <link rel="apple-touch-icon" href="/icons/icon-192.jpg" />
+        <link rel="apple-touch-icon" href="/saintsal-icon.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
       </head>
       <body className={`${montserrat.variable} ${playfair.variable} font-sans antialiased`}>

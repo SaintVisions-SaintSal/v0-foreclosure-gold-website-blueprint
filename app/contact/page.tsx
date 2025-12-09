@@ -18,7 +18,8 @@ export default function ContactPage() {
             Get in <span className="text-gold-gradient">Touch</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Have questions? Our team is here to help you find the perfect lead solution for your investment strategy.
+            Have questions? Our team, led by SaintSal AI and Managing Director Darren Brown, is here to help you find
+            the perfect lead solution.
           </p>
         </div>
       </section>
@@ -65,9 +66,9 @@ export default function ContactPage() {
                   <Mail className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-semibold mb-1">Email Us</h3>
-                <p className="text-muted-foreground text-sm mb-2">Our team typically responds within 2 hours</p>
-                <a href="mailto:support@foreclosuregold.com" className="text-primary hover:underline">
-                  support@foreclosuregold.com
+                <p className="text-muted-foreground text-sm mb-2">SaintSal AI typically responds within minutes</p>
+                <a href="mailto:support@cookinforeclosures.com" className="text-primary hover:underline">
+                  support@cookinforeclosures.com
                 </a>
               </div>
 
@@ -87,7 +88,7 @@ export default function ContactPage() {
                   <MapPin className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-semibold mb-1">Visit Us</h3>
-                <p className="text-muted-foreground text-sm mb-2">Our headquarters</p>
+                <p className="text-muted-foreground text-sm mb-2">Saint Vision Technologies LLC</p>
                 <p className="text-sm">
                   100 Wall Street, Suite 2500
                   <br />
@@ -100,13 +101,13 @@ export default function ContactPage() {
                   <Clock className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-semibold mb-1">Business Hours</h3>
-                <p className="text-muted-foreground text-sm mb-2">When we're available</p>
+                <p className="text-muted-foreground text-sm mb-2">SaintSal AI available 24/7</p>
                 <p className="text-sm">
-                  Monday - Friday: 8am - 6pm EST
+                  AI Support: 24/7/365
+                  <br />
+                  Phone Support: Mon-Fri, 8am - 6pm EST
                   <br />
                   Saturday: 9am - 2pm EST
-                  <br />
-                  Sunday: Closed
                 </p>
               </div>
             </div>

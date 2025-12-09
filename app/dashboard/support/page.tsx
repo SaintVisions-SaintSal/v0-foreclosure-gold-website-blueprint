@@ -24,7 +24,7 @@ const faqs = [
 export default function SupportPage() {
   return (
     <>
-      <DashboardHeader title="Support Center" subtitle="Get help with your ForeclosureGold account" />
+      <DashboardHeader title="Support Center" subtitle="Get help with your CookinForeclosures account" />
 
       <div className="p-6 space-y-6">
         {/* SaintSal Promo */}
@@ -86,8 +86,8 @@ export default function SupportPage() {
                   </div>
                   <div>
                     <div className="text-sm text-muted-foreground">Email Support</div>
-                    <a href="mailto:support@foreclosuregold.com" className="font-medium hover:text-primary">
-                      support@foreclosuregold.com
+                    <a href="mailto:support@cookinforeclosures.com" className="font-medium hover:text-primary">
+                      support@cookinforeclosures.com
                     </a>
                   </div>
                 </div>

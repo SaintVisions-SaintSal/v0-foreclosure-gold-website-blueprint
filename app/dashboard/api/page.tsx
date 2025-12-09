@@ -14,8 +14,8 @@ const endpoints = [
   { method: "GET", path: "/api/v1/stats", description: "Get lead statistics" },
 ]
 
-const codeExample = `// Example: Fetch leads with the ForeclosureGold API
-const response = await fetch('https://api.foreclosuregold.com/v1/leads', {
+const codeExample = `// Example: Fetch leads with the CookinForeclosures API
+const response = await fetch('https://api.cookinforeclosures.com/v1/leads', {
   headers: {
     'Authorization': 'Bearer YOUR_API_KEY',
     'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ export default function ApiPage() {
 
   return (
     <>
-      <DashboardHeader title="API & Documentation" subtitle="Integrate ForeclosureGold data into your systems" />
+      <DashboardHeader title="API & Documentation" subtitle="Integrate CookinForeclosures data into your systems" />
 
       <div className="p-6 space-y-6">
         {/* API Key */}

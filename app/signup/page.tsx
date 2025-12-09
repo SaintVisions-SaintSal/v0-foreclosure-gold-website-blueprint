@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import ChefHat from "lucide-react/ChefHat" // Import ChefHat icon
 
 import Link from "next/link"
 import { useState } from "react"
@@ -108,12 +109,12 @@ export default function SignupPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5" />
         <div className="relative z-10 flex flex-col justify-between p-12 w-full">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">F</span>
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg">
+              <ChefHat className="w-6 h-6 text-primary-foreground" />
             </div>
             <span className="text-xl font-bold">
-              <span className="text-gold-gradient">Foreclosure</span>
-              <span className="text-foreground">Gold</span>
+              <span className="text-gold-gradient">Cookin</span>
+              <span className="text-foreground">Foreclosures</span>
             </span>
           </Link>
 
@@ -148,7 +149,7 @@ export default function SignupPage() {
           </div>
 
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} ForeclosureGold. All rights reserved.
+            © {new Date().getFullYear()} CookinForeclosures. All rights reserved.
           </p>
         </div>
       </div>
@@ -156,14 +157,13 @@ export default function SignupPage() {
       {/* Right Side - Form */}
       <div className="flex-1 flex items-start sm:items-center justify-center p-6 sm:p-8 overflow-y-auto">
         <div className="w-full max-w-md">
-          {/* Mobile Logo */}
           <Link href="/" className="flex items-center gap-2 mb-6 lg:hidden">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">F</span>
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg">
+              <ChefHat className="w-6 h-6 text-primary-foreground" />
             </div>
             <span className="text-xl font-bold">
-              <span className="text-gold-gradient">Foreclosure</span>
-              <span className="text-foreground">Gold</span>
+              <span className="text-gold-gradient">Cookin</span>
+              <span className="text-foreground">Foreclosures</span>
             </span>
           </Link>
 

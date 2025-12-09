@@ -27,7 +27,7 @@ export function SaintSalAssistant() {
       id: "1",
       role: "assistant",
       content:
-        "Hello! I'm SaintSal™, your ForeclosureGold AI assistant. How can I help you find the perfect distressed property leads today?",
+        "Hello! I'm SaintSal™, your CookinForeclosures AI assistant. How can I help you find the perfect distressed property leads today?",
       timestamp: new Date(),
     },
   ])
@@ -67,11 +67,11 @@ export function SaintSalAssistant() {
         "get started":
           "Getting started is easy!\n\n1. Click 'Get Started' in the navigation\n2. Choose your subscription plan\n3. Select your target states/counties\n4. Start receiving leads instantly!\n\nWould you like me to walk you through the sign-up process?",
         support:
-          "I'm here to help! For immediate assistance:\n\n• **Email**: support@foreclosuregold.com\n• **Phone**: (888) 555-GOLD\n• **Live Chat**: You're using it now!\n\nWhat specific issue can I help you with?",
+          "I'm here to help! For immediate assistance:\n\n• **Email**: support@cookinforeclosures.com\n• **Phone**: (888) 555-GOLD\n• **Live Chat**: You're using it now!\n\nWhat specific issue can I help you with?",
       }
 
       let response =
-        "I'd be happy to help you with that! ForeclosureGold provides real-time distressed property leads across all 50 states. Is there something specific about our services you'd like to know?"
+        "I'd be happy to help you with that! CookinForeclosures provides real-time distressed property leads across all 50 states. Is there something specific about our services you'd like to know?"
 
       const lowerInput = userMessage.content.toLowerCase()
       if (lowerInput.includes("pricing") || lowerInput.includes("cost") || lowerInput.includes("price")) {

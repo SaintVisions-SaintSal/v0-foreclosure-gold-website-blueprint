@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 const testimonials = [
   {
     quote:
-      "ForeclosureGold has completely transformed my wholesaling business. The missed payment alerts give me access to deals 3-4 weeks before my competitors even know they exist.",
+      "CookinForeclosures has completely transformed my wholesaling business. The missed payment alerts give me access to deals 3-4 weeks before my competitors even know they exist.",
     author: "Marcus Chen",
     role: "Real Estate Investor",
     location: "Austin, TX",
@@ -21,14 +21,14 @@ const testimonials = [
   },
   {
     quote:
-      "As a broker specializing in distressed properties, ForeclosureGold is my secret weapon. The probate and bankruptcy leads are unmatched in quality.",
+      "As a broker specializing in distressed properties, CookinForeclosures is my secret weapon. The probate and bankruptcy leads are unmatched in quality.",
     author: "David Thompson",
     role: "Licensed Broker",
     location: "Phoenix, AZ",
   },
   {
     quote:
-      "I've tried every lead service out there. ForeclosureGold delivers the freshest data at the most competitive price. It's a no-brainer for serious investors.",
+      "I've tried every lead service out there. CookinForeclosures delivers the freshest data at the most competitive price. It's a no-brainer for serious investors.",
     author: "Sarah Mitchell",
     role: "Investment Fund Manager",
     location: "Denver, CO",
