@@ -16,9 +16,9 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: "CookinForeclosures - Responsible Intelligence - Welcome to the Capital of CAPITAL!",
+  title: "CookinForeclosures | Responsible Intelligence - Cookin' Knowledge 24/7",
   description:
-    "Access verified, up-to-the-minute foreclosure, probate, missed-payment, and bankruptcy leads before anyone else. Nationwide coverage, every state, every county, every day.",
+    "Access verified, up-to-the-minute foreclosure, probate, missed-payment, and bankruptcy leads before anyone else. Nationwide coverage, every state, every county, every day. A Saint Vision Technologies LLC Company.",
   keywords: [
     "foreclosure leads",
     "distressed properties",
@@ -26,16 +26,34 @@ export const metadata: Metadata = {
     "probate leads",
     "bankruptcy leads",
     "pre-foreclosure",
+    "SaintSal",
+    "Saint Vision Technologies",
   ],
   icons: {
-    icon: [{ url: "/saintsal-icon.png", type: "image/png" }, { url: "/favicon.ico" }],
-    apple: "/saintsal-icon.png",
+    icon: [
+      { url: "/saintsal-icon.png", sizes: "32x32", type: "image/png" },
+      { url: "/saintsal-icon.png", sizes: "192x192", type: "image/png" },
+    ],
+    shortcut: "/saintsal-icon.png",
+    apple: [{ url: "/saintsal-icon.png", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
     title: "CookinForeclosures",
+  },
+  openGraph: {
+    title: "CookinForeclosures | Responsible Intelligence - Cookin' Knowledge 24/7",
+    description:
+      "Access verified, up-to-the-minute foreclosure, probate, missed-payment, and bankruptcy leads before anyone else.",
+    siteName: "CookinForeclosures",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CookinForeclosures | Responsible Intelligence",
+    description: "Cookin' Knowledge 24/7 - Real-time distressed property leads nationwide.",
   },
   formatDetection: {
     telephone: true,
