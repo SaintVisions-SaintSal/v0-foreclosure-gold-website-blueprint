@@ -1,9 +1,6 @@
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { SaintSalAssistant } from "@/components/saint-sal-assistant"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { Mail, Phone, MapPin, Clock } from "lucide-react"
 
 export default function ContactPage() {
@@ -28,38 +25,32 @@ export default function ContactPage() {
       <section className="pb-24 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-5 gap-12">
-            {/* Form */}
             <div className="lg:col-span-3">
-              <div className="p-8 rounded-2xl bg-card border border-border">
+              <div className="p-4 sm:p-8 rounded-2xl bg-card border border-border">
                 <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-                <form className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-sm font-medium mb-2 block">Name</label>
-                      <Input placeholder="Your name" className="bg-muted border-0 h-12" />
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium mb-2 block">Email</label>
-                      <Input type="email" placeholder="you@example.com" className="bg-muted border-0 h-12" />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Phone</label>
-                    <Input type="tel" placeholder="(555) 123-4567" className="bg-muted border-0 h-12" />
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Message</label>
-                    <Textarea
-                      placeholder="Tell us about your investment goals and how we can help..."
-                      className="bg-muted border-0 min-h-[150px]"
-                    />
-                  </div>
-                  <Button className="w-full h-12 bg-primary text-primary-foreground hover:bg-primary/90">Submit</Button>
-                </form>
+                <div className="w-full overflow-hidden rounded-xl">
+                  <iframe
+                    src="https://api.leadconnectorhq.com/widget/form/gPGc1pTZGRvxybqPpDRL"
+                    style={{ width: "100%", height: "700px", border: "none" }}
+                    id="contact-gPGc1pTZGRvxybqPpDRL"
+                    data-layout="{'id':'INLINE'}"
+                    data-trigger-type="alwaysShow"
+                    data-trigger-value=""
+                    data-activation-type="alwaysActivated"
+                    data-activation-value=""
+                    data-deactivation-type="neverDeactivate"
+                    data-deactivation-value=""
+                    data-form-name="Apply Now SVG2"
+                    data-height="700"
+                    data-layout-iframe-id="contact-gPGc1pTZGRvxybqPpDRL"
+                    data-form-id="gPGc1pTZGRvxybqPpDRL"
+                    title="Apply Now SVG2"
+                  />
+                </div>
               </div>
             </div>
 
-            {/* Contact Info */}
+            {/* Contact Info - Updated email to support@cookin.io */}
             <div className="lg:col-span-2 space-y-6">
               <div className="p-6 rounded-xl bg-card border border-border">
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
@@ -67,8 +58,8 @@ export default function ContactPage() {
                 </div>
                 <h3 className="font-semibold mb-1">Email Us</h3>
                 <p className="text-muted-foreground text-sm mb-2">SaintSal AI typically responds within minutes</p>
-                <a href="mailto:support@cookinforeclosures.com" className="text-primary hover:underline">
-                  support@cookinforeclosures.com
+                <a href="mailto:support@cookin.io" className="text-primary hover:underline">
+                  support@cookin.io
                 </a>
               </div>
 
@@ -117,6 +108,7 @@ export default function ContactPage() {
 
       <Footer />
       <SaintSalAssistant />
+      <script src="https://link.msgsndr.com/js/form_embed.js" async />
     </main>
   )
 }

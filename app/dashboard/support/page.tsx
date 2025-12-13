@@ -1,8 +1,5 @@
 import { DashboardHeader } from "@/components/dashboard/header"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { MessageCircle, Mail, Phone, FileText, Sparkles } from "lucide-react"
 
 const faqs = [
@@ -47,7 +44,6 @@ export default function SupportPage() {
         </Card>
 
         <div className="grid lg:grid-cols-2 gap-6">
-          {/* Contact Form */}
           <Card className="bg-card border-border">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -56,24 +52,29 @@ export default function SupportPage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <form className="space-y-4">
-                <div>
-                  <label className="text-sm font-medium mb-2 block">Subject</label>
-                  <Input placeholder="Brief description of your issue" className="bg-muted border-0" />
-                </div>
-                <div>
-                  <label className="text-sm font-medium mb-2 block">Message</label>
-                  <Textarea
-                    placeholder="Describe your issue in detail..."
-                    className="bg-muted border-0 min-h-[150px]"
-                  />
-                </div>
-                <Button className="w-full bg-primary text-primary-foreground">Submit Ticket</Button>
-              </form>
+              <div className="w-full overflow-hidden rounded-xl">
+                <iframe
+                  src="https://api.leadconnectorhq.com/widget/form/gPGc1pTZGRvxybqPpDRL"
+                  style={{ width: "100%", height: "500px", border: "none" }}
+                  id="support-gPGc1pTZGRvxybqPpDRL"
+                  data-layout="{'id':'INLINE'}"
+                  data-trigger-type="alwaysShow"
+                  data-trigger-value=""
+                  data-activation-type="alwaysActivated"
+                  data-activation-value=""
+                  data-deactivation-type="neverDeactivate"
+                  data-deactivation-value=""
+                  data-form-name="Apply Now SVG2"
+                  data-height="500"
+                  data-layout-iframe-id="support-gPGc1pTZGRvxybqPpDRL"
+                  data-form-id="gPGc1pTZGRvxybqPpDRL"
+                  title="Apply Now SVG2"
+                />
+              </div>
             </CardContent>
           </Card>
 
-          {/* Contact Info */}
+          {/* Contact Info - Updated email to support@cookin.io */}
           <div className="space-y-6">
             <Card className="bg-card border-border">
               <CardHeader>
@@ -86,8 +87,8 @@ export default function SupportPage() {
                   </div>
                   <div>
                     <div className="text-sm text-muted-foreground">Email Support</div>
-                    <a href="mailto:support@cookinforeclosures.com" className="font-medium hover:text-primary">
-                      support@cookinforeclosures.com
+                    <a href="mailto:support@cookin.io" className="font-medium hover:text-primary">
+                      support@cookin.io
                     </a>
                   </div>
                 </div>
@@ -149,6 +150,7 @@ export default function SupportPage() {
           </CardContent>
         </Card>
       </div>
+      <script src="https://link.msgsndr.com/js/form_embed.js" async />
     </>
   )
 }

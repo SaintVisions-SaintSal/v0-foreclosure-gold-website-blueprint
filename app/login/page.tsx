@@ -15,7 +15,6 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    // Simulate login - will be replaced with actual auth
     setTimeout(() => {
       window.location.href = "/dashboard"
     }, 1500)
@@ -28,18 +27,18 @@ export default function LoginPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5" />
         <div className="relative z-10 flex flex-col justify-between p-12 w-full">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">F</span>
+            <div className="w-10 h-10 rounded-lg overflow-hidden">
+              <img src="/saintsal-logo.png" alt="SaintSal" className="w-full h-full object-contain" />
             </div>
             <span className="text-xl font-bold">
-              <span className="text-gold-gradient">Foreclosure</span>
-              <span className="text-foreground">Gold</span>
+              <span className="text-gold-gradient">Cookin</span>
+              <span className="text-foreground">Foreclosures</span>
             </span>
           </Link>
 
           <div className="max-w-md">
             <h2 className="text-4xl font-bold mb-6">
-              Welcome back to the <span className="text-gold-gradient">Gold Standard</span> in leads
+              Welcome back to the <span className="text-gold-gradient">Capital of CAPITAL</span>
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
               Access real-time distressed property leads across all 50 states. Your dashboard awaits.
@@ -59,7 +58,7 @@ export default function LoginPage() {
           </div>
 
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} ForeclosureGold. All rights reserved.
+            © {new Date().getFullYear()} CookinForeclosures. A Saint Vision Technologies LLC company.
           </p>
         </div>
       </div>
@@ -67,14 +66,14 @@ export default function LoginPage() {
       {/* Right Side - Form */}
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="w-full max-w-md">
-          {/* Mobile Logo */}
+          {/* Mobile Logo - Updated to CookinForeclosures branding */}
           <Link href="/" className="flex items-center gap-2 mb-8 lg:hidden">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">F</span>
+            <div className="w-10 h-10 rounded-lg overflow-hidden">
+              <img src="/saintsal-logo.png" alt="SaintSal" className="w-full h-full object-contain" />
             </div>
             <span className="text-xl font-bold">
-              <span className="text-gold-gradient">Foreclosure</span>
-              <span className="text-foreground">Gold</span>
+              <span className="text-gold-gradient">Cookin</span>
+              <span className="text-foreground">Foreclosures</span>
             </span>
           </Link>
 

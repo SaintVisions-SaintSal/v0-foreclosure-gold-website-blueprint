@@ -1,14 +1,13 @@
 "use client"
 
 import type React from "react"
-import ChefHat from "lucide-react/ChefHat" // Import ChefHat icon
+import { Eye, EyeOff, ArrowRight, Check, Sparkles } from "lucide-react"
 
 import Link from "next/link"
 import { useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Eye, EyeOff, ArrowRight, Check, Sparkles } from "lucide-react"
 
 const leadTypes = [
   "Wholesale Leads",
@@ -81,6 +80,7 @@ export default function SignupPage() {
   const [selectedLeadTypes, setSelectedLeadTypes] = useState<string[]>([])
   const [selectedStates, setSelectedStates] = useState<string[]>([])
   const [step, setStep] = useState(1)
+  const [showGHLForm, setShowGHLForm] = useState(false)
 
   const toggleLeadType = (type: string) => {
     setSelectedLeadTypes((prev) => (prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]))
@@ -96,10 +96,61 @@ export default function SignupPage() {
       setStep(step + 1)
       return
     }
-    setIsLoading(true)
-    setTimeout(() => {
-      window.location.href = "/dashboard"
-    }, 1500)
+    setShowGHLForm(true)
+  }
+
+  if (showGHLForm) {
+    return (
+      <main className="min-h-screen bg-background flex flex-col pt-safe pb-safe">
+        <div className="p-4 border-b border-border">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-10 h-10 rounded-lg overflow-hidden">
+              <img src="/saintsal-logo.png" alt="SaintSal" className="w-full h-full object-contain" />
+            </div>
+            <span className="text-xl font-bold">
+              <span className="text-gold-gradient">Cookin</span>
+              <span className="text-foreground">Foreclosures</span>
+            </span>
+          </Link>
+        </div>
+        <div className="flex-1 flex flex-col items-center justify-center p-4">
+          <div className="w-full max-w-2xl text-center mb-6">
+            <h1 className="text-2xl sm:text-3xl font-bold mb-2">
+              Almost there! Complete your <span className="text-gold-gradient">Application</span>
+            </h1>
+            <p className="text-muted-foreground">Fill out the form below to finalize your account setup</p>
+          </div>
+          <div className="w-full max-w-2xl bg-card rounded-2xl border border-border overflow-hidden">
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/form/gPGc1pTZGRvxybqPpDRL"
+              style={{ width: "100%", height: "700px", border: "none" }}
+              id="inline-gPGc1pTZGRvxybqPpDRL"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="Apply Now SVG2"
+              data-height="700"
+              data-layout-iframe-id="inline-gPGc1pTZGRvxybqPpDRL"
+              data-form-id="gPGc1pTZGRvxybqPpDRL"
+              title="Apply Now SVG2"
+            />
+          </div>
+          <div className="mt-6">
+            <Link href="/dashboard">
+              <Button variant="outline" className="h-12 bg-transparent">
+                Skip for now & Go to Dashboard
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+        <script src="https://link.msgsndr.com/js/form_embed.js" async />
+      </main>
+    )
   }
 
   return (
@@ -109,8 +160,8 @@ export default function SignupPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5" />
         <div className="relative z-10 flex flex-col justify-between p-12 w-full">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg">
-              <ChefHat className="w-6 h-6 text-primary-foreground" />
+            <div className="w-10 h-10 rounded-lg overflow-hidden">
+              <img src="/saintsal-logo.png" alt="SaintSal" className="w-full h-full object-contain" />
             </div>
             <span className="text-xl font-bold">
               <span className="text-gold-gradient">Cookin</span>
@@ -158,8 +209,8 @@ export default function SignupPage() {
       <div className="flex-1 flex items-start sm:items-center justify-center p-6 sm:p-8 overflow-y-auto">
         <div className="w-full max-w-md">
           <Link href="/" className="flex items-center gap-2 mb-6 lg:hidden">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg">
-              <ChefHat className="w-6 h-6 text-primary-foreground" />
+            <div className="w-10 h-10 rounded-lg overflow-hidden">
+              <img src="/saintsal-logo.png" alt="SaintSal" className="w-full h-full object-contain" />
             </div>
             <span className="text-xl font-bold">
               <span className="text-gold-gradient">Cookin</span>
@@ -167,22 +218,6 @@ export default function SignupPage() {
             </span>
           </Link>
 
-          <div className="p-4 rounded-xl bg-card border border-border mb-6 lg:hidden">
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Selected Plan</span>
-              <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold">
-                {plan === "unlimited" ? "Unlimited Access" : "Pay Per Lead"}
-              </span>
-            </div>
-            <div className="text-2xl font-bold mt-2">
-              {plan === "unlimited" ? "$29.99" : "$25"}
-              <span className="text-sm font-normal text-muted-foreground">
-                {plan === "unlimited" ? "/month" : "/lead"}
-              </span>
-            </div>
-          </div>
-
-          {/* Progress Steps */}
           <div className="flex items-center gap-2 mb-6 sm:mb-8">
             {[1, 2, 3].map((s) => (
               <div key={s} className="flex items-center">
