@@ -25,8 +25,15 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 lg:w-12 lg:h-12">
-              <Image src="/saintsal-logo.png" alt="SaintSal Logo" fill className="object-contain" priority />
+            <div className="relative w-10 h-10 lg:w-12 lg:h-12 flex-shrink-0">
+              <Image
+                src="/saintsal-logo.png"
+                alt="SaintSal Logo"
+                width={48}
+                height={48}
+                className="w-full h-full object-contain"
+                priority
+              />
             </div>
             <span className="text-xl lg:text-2xl font-bold tracking-tight">
               <span className="text-gold-gradient">Cookin</span>
